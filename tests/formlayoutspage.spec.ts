@@ -8,5 +8,11 @@ test.beforeEach(async({page}) => {
 test('inline form test', async ({ page }) => {
   const pm = new PageManager(page)
   await pm.navigateTo().formLayoutMenu()
-  await pm.onFormLayoutsPage().fillInlineBox('Grant Hill', 'gh@gmail.com', true)
+  await pm.onFormLayoutsPage().fillInlineBox(pm.randomString(10), pm.randomEmail(), true)
+});
+
+test('using the grid test', async ({ page }) => {
+  const pm = new PageManager(page)
+  await pm.navigateTo().formLayoutMenu()
+  await pm.onFormLayoutsPage().fillInUsingTheGridBox(pm.randomEmail(), pm.randomString(12), 'Option 2')
 });

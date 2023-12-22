@@ -21,4 +21,15 @@ export class FormLayoutsPage extends HelperBase{
         expect(userValue).toEqual(userName)
         expect(emailValue).toEqual(email)
     }
+
+    async fillInUsingTheGridBox(email: string, password: string, option: string){
+        const blockItem = this.page.locator('nb-card', {hasText: 'Using the Grid'})
+        await blockItem.getByRole('textbox', {name: 'Email'}).fill(email)
+        await blockItem.getByRole('textbox', {name: 'Password'}).fill(password)
+        await blockItem.getByRole('radio', {name: option}).check({force: true})
+        await blockItem.getByRole('button', {name: 'Sign in'}).click()
+        expect(await blockItem.getByRole('radio', {name: option}).isChecked()).toBeTruthy()
+        expect(await blockItem.getByRole('textbox', {name: 'Email'}).inputValue()).toEqual(email)
+        expect(await blockItem.getByRole('textbox', {name: 'Password'}).inputValue()).toEqual(password)
+    }
 }
