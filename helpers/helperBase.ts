@@ -12,6 +12,11 @@ export class HelperBase{
         await this.page.waitForTimeout(timeInSeconds*1000)
     }
 
+    /**
+     * 
+     * @param length 
+     * @returns 
+     */
     randomString(length: number){
 
         const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
